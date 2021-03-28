@@ -1,4 +1,4 @@
-import { Category } from "@src/model/Category";
+import { Category } from "@src/modules/cars/model/Category";
 
 import { ICategoryRepository, ICreateCategoryDTO } from "./ICategoryRepository";
 
@@ -14,7 +14,7 @@ class CategoriesRepository implements ICategoryRepository {
     Object.assign(category, {
       name,
       description,
-      created_at: Date,
+      created_at: new Date(),
     });
 
     this.categories.push(category);
@@ -28,7 +28,7 @@ class CategoriesRepository implements ICategoryRepository {
     const category = this.categories.find((category) => category.name === name);
 
     if (!category) {
-      throw new Error("category not found");
+      throw new Error("category already exists");
     }
 
     return category;

@@ -1,14 +1,12 @@
-import { ICategoryRepository } from "@src/repositories/ICategoryRepository";
-
-interface IRequest {
-  name: string;
-  description: string;
-}
+import {
+  ICategoryRepository,
+  ICategoryDTO,
+} from "@src/modules/cars/repositories/ICategoryRepository";
 
 class CreateCategoryService {
   constructor(private categoriesRepository: ICategoryRepository) {}
 
-  execute({ name, description }: IRequest): void {
+  execute({ name, description }: ICategoryDTO): void {
     const categoryAlreadyExists = this.categoriesRepository.findByCategory({
       name,
     });
