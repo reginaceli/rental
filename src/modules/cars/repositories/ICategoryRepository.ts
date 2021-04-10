@@ -7,8 +7,10 @@ interface ICategoryDTO {
 
 interface ICategoryRepository {
   create({ name, description }: ICategoryDTO): void;
+
   list(): Category[];
-  findByCategory({ name }: Pick<ICategoryDTO, "name">): Category;
+
+  findByCategory({ name }: Pick<ICategoryDTO, "name">): boolean;
 }
 
 export { ICategoryRepository, ICategoryDTO };

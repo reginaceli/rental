@@ -1,14 +1,16 @@
 import { Specification } from "../model/Specification";
 
-interface ISpecficationDTO {
+interface ISpecificationDTO {
   name: string;
   description: string;
 }
 
 interface ISpecificationRepository {
-  create({ name, description }: ISpecficationDTO): void;
+  create({ name, description }: ISpecificationDTO): void;
+
   list(): Specification[];
-  findBySpecification({ name }: Pick<ISpecficationDTO, "name">): Specification;
+
+  findBySpecification({ name }: Pick<ISpecificationDTO, "name">): boolean;
 }
 
-export { ISpecficationDTO, ISpecificationRepository };
+export { ISpecificationRepository, ISpecificationDTO };

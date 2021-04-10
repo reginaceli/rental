@@ -1,17 +1,17 @@
 import {
-  ISpecficationDTO,
+  ISpecificationDTO,
   ISpecificationRepository,
-} from "../repositories/ISpecificationRepository";
+} from "../../repositories/ISpecificationRepository";
 
 class CreateSpecificationService {
   constructor(private specificationRepository: ISpecificationRepository) {}
 
-  execute({ name, description }: ISpecficationDTO): void {
-    const specificationExists = this.specificationRepository.findBySpecification(
+  execute({ name, description }: ISpecificationDTO): void {
+    const specificationAlreadExists = this.specificationRepository.findBySpecification(
       { name }
     );
 
-    if (specificationExists) {
+    if (specificationAlreadExists) {
       throw new Error("Specification already exists.");
     }
 
